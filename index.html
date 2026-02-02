@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sara</title>
+    <style>
+        :root {
+            --primary-red: #d00000;
+            --deep-red: #6a040f;
+            --wine-red: #4a0404;
+            --soft-pink: #ffb7c5;
+            --bg-gradient: linear-gradient(180deg, var(--wine-red) 0%, var(--primary-red) 100%);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: var(--bg-gradient);
+            color: #4a0404;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; 
+            position: relative;
+        }
+
+        /* Floating background hearts logic */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 182, 193, 0.45);
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            bottom: -50px;
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            text-align: center;
+            max-width: 1100px; /* Widened for multiple columns */
+            width: 95%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border: 3px solid var(--soft-pink);
+            z-index: 10;
+            position: relative;
+        }
+
+        .card::-webkit-scrollbar { width: 5px; }
+        .card::-webkit-scrollbar-thumb { background: var(--soft-pink); border-radius: 10px; }
+
+        .page { display: none; animation: fadeIn 0.8s ease-in; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* NEW: Vertical Stack Layout */
+        .content-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .side-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .side-img {
+            width: 140px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid var(--soft-pink);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .side-img:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 0 25px rgba(208, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .main-content { flex-grow: 1; }
+
+        .video-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid var(--soft-pink);
+        }
+
+        video { width: 100%; display: block; }
+
+        .heartfelt-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            white-space: pre-line;
+            text-align: left;
+        }
+
+        .btn {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        #noBtn { background: #555; position: relative; z-index: 100; }
+        #tease-message { color: var(--primary-red); font-weight: bold; display: none; margin-top: 10px; }
+
+        /* Celebration hearts */
+        .celebration-heart {
+            position: fixed;
+            top: -10vh;
+            font-size: 2rem;
+            color: #ff0000;
+            z-index: 100;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        /* Responsive: Stack columns on top of each other on mobile */
+        @media (max-width: 900px) {
+            .content-wrapper { flex-direction: column; align-items: center; }
+            .side-column { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .side-img { width: 120px; height: 160px; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="love.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="page1" class="card page active">
+        <h1 style="color: var(--wine-red);">Hi Sara Switzerland Kutty......</h1>
+        
+        <div class="content-wrapper">
+            <div class="side-column">
+                <img src="left.jpg" class="side-img" alt="Memory 1">
+                <img src="left1.jpg" class="side-img" alt="Memory 2">
+                <img src="left2.jpg" class="side-img" alt="Memory 3">
+		<img src="left3.jpg" class="side-img" alt="Memory 4">
+            </div>
+
+            <div class="main-content">
+                <div class="video-container">
+                    <video id="promVideo" controls loop>
+                        <source src="kiss.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="heartfelt-text">
+                    Sara kutty, 
+
+                    I wrote a poem for you. I have been working on this for the past one month. And fucker this was just me - Not Chatgpt. Everything from Afrin's brain.
+
+                    Sometimes I feel like I’m standing beside something extraordinary — not just beautiful, but luminous in the way you move through the world. You have that rare presence that feels delicate like glass, yet unbelievably strong, and that soft pink smile that seems to carry more warmth than words ever could.
+
+                    What amazes me most isn’t only how you look, but how you work. Watching you push yourself in the lab, chasing your Switzerland PhD with discipline and passion, makes me respect you deeply. You grind harder than almost anyone I know, yet your heart stays gentle, kind, and full of empathy for others — and that combination is what truly makes you shine.
+
+                    I also love that there are still so many things ahead of you that you haven’t experienced yet — moments, places, and feelings that are still waiting to find you outside. That sense of possibility around you makes it worthwhile to be near you at the same time.
+
+                    And when I asked you to wait until the gate, it wasn’t random to me — it felt like the right moment, like standing at the edge of something important together rather than rushing ahead alone. It wasnt random at all, because had abit of things planned for my bibbs. No kidding!
+                </div>
+            </div>
+
+            <div class="side-column">
+                <img src="right.jpg" class="side-img" alt="Memory 4">
+                <img src="right1.jpg" class="side-img" alt="Memory 5">
+                <img src="right2.jpg" class="side-img" alt="Memory 6">
+		<img src="right3.jpg" class="side-img" alt="Memory 7">
+            </div>
+        </div>
+
+        <button class="btn" onclick="startExperience()">Next ❤️</button>
+    </div>
+
+    <div id="page2" class="card page">
+        <h1 style="color: var(--wine-red);">So, I keep imagining how much more magical prom would be if I got to share it with you. So tell me, would you walk into that night beside me??</h1>
+        <p style="font-size: 1.3rem;">Friday, February 6th</p>
+        
+        <div id="tease-message">You sure bubbu pookie?</div>
+
+        <div class="btn-group">
+            <button class="btn" onclick="celebrate()">YES!</button>
+            <button id="noBtn" class="btn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function createBackgroundHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 10 + "px";
+            heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 8000);
+        }
+        setInterval(createBackgroundHeart, 300);
+
+        function startExperience() {
+            const music = document.getElementById('bgMusic');
+            music.play().catch(e => console.log("Audio waiting..."));
+            showPage(2);
+        }
+
+        function showPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + pageNumber).classList.add('active');
+            document.querySelector('.card').scrollTop = 0;
+        }
+
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const tease = document.getElementById('tease-message');
+            tease.style.display = 'block';
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            const card = document.querySelector('.card');
+            card.innerHTML = "<h1 style='color: #d00000;'>Can't wait for Feb 6th! ❤️</h1><p style='font-size:1.5rem;'>I feel grateful to cross paths with you, Sara Kutty.</p>";
+            setInterval(createCelebrationHeart, 50);
+        }
+
+        function createCelebrationHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('celebration-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 1 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
